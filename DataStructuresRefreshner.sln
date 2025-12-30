@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36616.10 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructuresRefreshner", "DataStructuresRefreshner.csproj", "{518B118C-26DD-4C1F-98A7-A6422790005D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{518B118C-26DD-4C1F-98A7-A6422790005D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{518B118C-26DD-4C1F-98A7-A6422790005D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{518B118C-26DD-4C1F-98A7-A6422790005D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{518B118C-26DD-4C1F-98A7-A6422790005D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {079CD5EC-6E07-4CD3-B9BD-CBA6C96822BB}
+	EndGlobalSection
+EndGlobal
