@@ -33,50 +33,75 @@
 
 //ReverseString("Andrei");
 
-static void MergeTwoSortedArrays ( int[] firstArray, int[] secondArray)
-{
-    int arrayWithMaxChars = firstArray.Length + secondArray.Length;
+//static void MergeTwoSortedArrays ( int[] firstArray, int[] secondArray)
+//{
+//    int arrayWithMaxChars = firstArray.Length + secondArray.Length;
 
     
 
-    int[] mergedArray = new int[arrayWithMaxChars];
+//    int[] mergedArray = new int[arrayWithMaxChars];
 
-    int j = 0;
-    int k = 0;
-    int index = 0;
+//    int j = 0;
+//    int k = 0;
+//    int index = 0;
 
-    while (j < firstArray.Length && k < secondArray.Length)
+//    while (j < firstArray.Length && k < secondArray.Length)
+//    {
+//        if (firstArray[j] <= secondArray[k])
+//        {
+//            mergedArray[index] = firstArray[j];
+//            j++;
+//            index++;
+//        } else
+//        {
+//            mergedArray[index] = secondArray[k];
+//            k++;
+//            index++;
+//        }
+//    }
+//    while (j < firstArray.Length)
+//    {
+//        mergedArray[index] = firstArray[j];
+//        j++;
+//        index++;
+//    }
+
+//    while (k < secondArray.Length)
+//    {
+//        mergedArray[index] = secondArray[k];
+//        k++;
+//        index++;
+//    }
+
+//    foreach (int i in mergedArray)
+//    {
+//        Console.WriteLine(i);
+//    }
+//}
+
+//MergeTwoSortedArrays([0, 3, 4, 31], [4, 6, 30]);
+
+static int[] TopKFrequent(int[] nums, int k)
     {
-        if (firstArray[j] <= secondArray[k])
+        Dictionary<int, int> frequencyMap = new Dictionary<int, int>();
+        foreach (var num in nums)
         {
-            mergedArray[index] = firstArray[j];
-            j++;
-            index++;
-        } else
-        {
-            mergedArray[index] = secondArray[k];
-            k++;
-            index++;
+            frequencyMap[num] = frequencyMap.GetValueOrDefault(num, 0) + 1;
         }
-    }
-    while (j < firstArray.Length)
+
+        // time complexity este de m log n unde m este numarul de elemente distincte si n este numarul total de elemente in input array
+        var topK = frequencyMap
+            .OrderByDescending(pair => pair.Value)
+            .Take(k)
+            .Select(pair => pair.Key)
+            .ToArray();
+
+    foreach (var num in topK)
     {
-        mergedArray[index] = firstArray[j];
-        j++;
-        index++;
+        Console.WriteLine(num);
+    }
+        return topK;
     }
 
-    while (k < secondArray.Length)
-    {
-        mergedArray[index] = secondArray[k];
-        k++;
-        index++;
-    }
+TopKFrequent([2, 3, 4, 4, 4], 2);
 
-    foreach (int i in mergedArray)
-    {
-        Console.WriteLine(i);
-    }
-}
-
-MergeTwoSortedArrays([0, 3, 4, 31], [4, 6, 30]);
