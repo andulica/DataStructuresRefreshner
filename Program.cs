@@ -105,44 +105,72 @@
 
 //TopKFrequent([2, 3, 4, 4, 4], 2);
 
-static int[] ProductExceptSelf(int[] nums)
+//static int[] ProductExceptSelf(int[] nums)
+//{
+//    // Folosim suffix si prefix 
+//    // trebuie sa aflam totalul rezultat din inmultirea cifrelor inainte 
+//    // de nums[i] si dupa fara sa includem si nums[i]
+//    // Putem creea un array prefix si unul suffix cu 
+//    // ex : 
+//    // nums = [a, b, c, d]
+//    // prefix = [1, a, ab, abc]
+//    // sufix = [abc, ab, a, 1] 
+//    // unde 1 este pus ca delimitator pentru a sti ca acolo este capatul si ca nu exista un prefix la primul element si un sufix la ultimul element
+//    // apoi inmultim prefix [i] cu suffix [i] si obtinem rezultatul pentru output[i]
+
+
+//    //    nums = (1) [1, 2, 4, 6] (1)
+
+//    //  prefix res = [1, 1, 2, 8]
+
+//    // postfix res = [       , 1]
+
+//    // outut res =   [       , 8]
+
+//    int[] result = new int[nums.Length];
+//    int prefix = 1;
+
+//    for (int i = 0; i < nums.Length; i++)
+//    {
+//        result[i] = prefix;
+//        prefix *= nums[i];
+//    }
+
+//    int postfix = 1;
+
+//    for (int i = nums.Length - 1; i >= 0; i--)
+//    {
+//        result[i] *= postfix;
+//        postfix *= nums[i];
+//    }
+
+//    return result;
+//}
+
+
+static bool IsPalindrome(string s)
 {
-    // Folosim suffix si prefix 
-    // trebuie sa aflam totalul rezultat din inmultirea cifrelor inainte 
-    // de nums[i] si dupa fara sa includem si nums[i]
-    // Putem creea un array prefix si unul suffix cu 
-    // ex : 
-    // nums = [a, b, c, d]
-    // prefix = [1, a, ab, abc]
-    // sufix = [abc, ab, a, 1] 
-    // unde 1 este pus ca delimitator pentru a sti ca acolo este capatul si ca nu exista un prefix la primul element si un sufix la ultimul element
-    // apoi inmultim prefix [i] cu suffix [i] si obtinem rezultatul pentru output[i]
 
+    // Easy solution using two pointers and built in functions for checks
+    int left = 0;
+    int right = s.Length - 1;
 
-    //    nums = (1) [1, 2, 4, 6] (1)
-
-    //  prefix res = [1, 1, 2, 8]
-    
-    // postfix res = [       , 1]
-
-    // outut res =   [       , 8]
-  
-    int[] result = new int[nums.Length];
-    int prefix = 1;
-
-    for (int i = 0; i < nums.Length; i++)
+    while (left < right)
     {
-        result[i] = prefix;
-        prefix *= nums[i];
+        while (left < right && !char.IsLetterOrDigit(s[left]))
+            left++;
+
+        while (left < right && !char.IsLetterOrDigit(s[right]))
+            right--;
+
+        if (char.ToLower(s[left]) != char.ToLower(s[right]))
+            return false;
+
+        left++;
+        right--;
     }
 
-    int postfix = 1;
-
-    for (int i = nums.Length - 1; i >= 0; i--)
-    {
-        result[i] *= postfix;
-        postfix *= nums[i];
-    }
-
-    return result;
+    return true;
 }
+
+Console.WriteLine(IsPalindrome("Was it a car or a cat I saw?"));
