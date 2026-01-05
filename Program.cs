@@ -148,29 +148,62 @@
 //}
 
 
-static bool IsPalindrome(string s)
+//static bool IsPalindrome(string s)
+//{
+
+//    // Easy solution using two pointers and built in functions for checks
+//    int left = 0;
+//    int right = s.Length - 1;
+
+//    while (left < right)
+//    {
+//        while (left < right && !char.IsLetterOrDigit(s[left]))
+//            left++;
+
+//        while (left < right && !char.IsLetterOrDigit(s[right]))
+//            right--;
+
+//        if (char.ToLower(s[left]) != char.ToLower(s[right]))
+//            return false;
+
+//        left++;
+//        right--;
+//    }
+
+//    return true;
+//}
+
+//Console.WriteLine(IsPalindrome("Was it a car or a cat I saw?"));
+
+static bool IsValidSudoku(char[][] board)
 {
+    HashSet<char>[] rows = new HashSet<char>[9];
+    for (int i = 0; i < 9; i++) rows[i] = new HashSet<char>();
 
-    // Easy solution using two pointers and built in functions for checks
-    int left = 0;
-    int right = s.Length - 1;
+    HashSet<char>[] cols = new HashSet<char>[9];
+    for (int i = 0; i < 9; i++) cols[i] = new HashSet<char>();
 
-    while (left < right)
+    Dictionary<(int, int), HashSet<char>> squares = new Dictionary<(int, int), HashSet<char>>();
+    for (int r = 0; r < 3; r++)
+        for (int c = 0; c < 3; c++)
+            squares[(r, c)] = new HashSet<char>();
+
+
+    for (int i = 0; i < board.Length; i++)
     {
-        while (left < right && !char.IsLetterOrDigit(s[left]))
-            left++;
+        for (int j = 0; j < board[i].Length; j++)
+        {
+            char val = board[i][j];
+            if (val == '.')
+                continue;
 
-        while (left < right && !char.IsLetterOrDigit(s[right]))
-            right--;
+            if (rows[i].Contains(val) || cols[j].Contains(val) || squares[(i / 3, j / 3)].Contains(val))
+                return false;
 
-        if (char.ToLower(s[left]) != char.ToLower(s[right]))
-            return false;
-
-        left++;
-        right--;
+            rows[i].Add(val);
+            cols[j].Add(val);
+            squares[(i / 3, j / 3)].Add(val);
+        }
     }
-
     return true;
 }
-
-Console.WriteLine(IsPalindrome("Was it a car or a cat I saw?"));
