@@ -175,35 +175,79 @@
 
 //Console.WriteLine(IsPalindrome("Was it a car or a cat I saw?"));
 
-static bool IsValidSudoku(char[][] board)
-{
-    HashSet<char>[] rows = new HashSet<char>[9];
-    for (int i = 0; i < 9; i++) rows[i] = new HashSet<char>();
+//static bool IsValidSudoku(char[][] board)
+//{
+//    HashSet<char>[] rows = new HashSet<char>[9];
+//    for (int i = 0; i < 9; i++) rows[i] = new HashSet<char>();
 
-    HashSet<char>[] cols = new HashSet<char>[9];
-    for (int i = 0; i < 9; i++) cols[i] = new HashSet<char>();
+//    HashSet<char>[] cols = new HashSet<char>[9];
+//    for (int i = 0; i < 9; i++) cols[i] = new HashSet<char>();
 
-    Dictionary<(int, int), HashSet<char>> squares = new Dictionary<(int, int), HashSet<char>>();
-    for (int r = 0; r < 3; r++)
-        for (int c = 0; c < 3; c++)
-            squares[(r, c)] = new HashSet<char>();
+//    Dictionary<(int, int), HashSet<char>> squares = new Dictionary<(int, int), HashSet<char>>();
+//    for (int r = 0; r < 3; r++)
+//        for (int c = 0; c < 3; c++)
+//            squares[(r, c)] = new HashSet<char>();
 
 
-    for (int i = 0; i < board.Length; i++)
-    {
-        for (int j = 0; j < board[i].Length; j++)
-        {
-            char val = board[i][j];
-            if (val == '.')
-                continue;
+//    for (int i = 0; i < board.Length; i++)
+//    {
+//        for (int j = 0; j < board[i].Length; j++)
+//        {
+//            char val = board[i][j];
+//            if (val == '.')
+//                continue;
 
-            if (rows[i].Contains(val) || cols[j].Contains(val) || squares[(i / 3, j / 3)].Contains(val))
-                return false;
+//            if (rows[i].Contains(val) || cols[j].Contains(val) || squares[(i / 3, j / 3)].Contains(val))
+//                return false;
 
-            rows[i].Add(val);
-            cols[j].Add(val);
-            squares[(i / 3, j / 3)].Add(val);
-        }
-    }
-    return true;
-}
+//            rows[i].Add(val);
+//            cols[j].Add(val);
+//            squares[(i / 3, j / 3)].Add(val);
+//        }
+//    }
+//    return true;
+//}
+
+//static int LongestConsecutive(int[] nums)
+//{
+//    //la fiecare element din array ne uitam si vedem daca exista un element mai mic
+//    // cu 1 decat elementul actual pentru a ne da seama daca este un sequence valid 
+//    // cu 1 mai mare decat elementul actual pentru a sti daca avem un sequence mai mare
+//    // transcriem int [] nums intr-un set pentru a face lookup de O(1)  ~
+//    // la final o sa avem un traversal de O(n) fiindca trecem pe la fiecare element o data
+//    HashSet<int> setNums = new HashSet<int>(nums.Length);
+//    int longestStreak = 0;
+
+//    for (int i = 0; i < nums.Length; i++)
+//    {
+//        setNums.Add(nums[i]);
+//    }
+
+//    foreach (int num in setNums)
+//    {
+//        int currentStreak = 0;
+//        int currentNum = 0;
+
+//        if (!setNums.Contains(num - 1))
+//        {
+//            currentStreak++;
+//            currentNum = num;
+//        }
+
+//        while (setNums.Contains(currentNum + 1))
+//        {
+//            currentNum++;
+//            currentStreak++;
+//        }
+
+//        if (currentStreak > longestStreak)
+//        {
+//            longestStreak = currentStreak;
+//        }
+
+//    }
+
+//    return longestStreak;
+//}
+
+//LongestConsecutive(new int[] { 2, 20, 4, 10, 3, 4, 5 });
