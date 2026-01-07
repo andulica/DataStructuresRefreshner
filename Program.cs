@@ -251,3 +251,35 @@
 //}
 
 //LongestConsecutive(new int[] { 2, 20, 4, 10, 3, 4, 5 });
+
+
+MaxArea(new int[] { 2, 4, 1, 8, 5, 3, 1 });
+// int [] heights = [2,4,1,8,5,3,1]
+               //    l           r
+static int MaxArea(int[] heights)
+{
+    int l = 0;
+    int r = heights.Length - 1;
+    int maxVolume = 0;
+    
+        while (l < r)
+        {
+            int tempMaxVolume = (r - l) * Math.Min(heights[l], heights[r]);
+
+            if (heights[l] < heights[r])
+            {
+                l++;
+            }
+            else
+            {
+                r--;
+            }
+
+            if (tempMaxVolume > maxVolume)
+            {
+                maxVolume = tempMaxVolume;
+            }
+        }
+   
+    return maxVolume;
+}
